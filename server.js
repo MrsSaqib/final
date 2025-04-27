@@ -16,35 +16,35 @@
 // });
 
 
-const express = require('express'); 
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const authRoutes = require('./routes/auth');
-const taskRoutes = require('./routes/tasks');
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const dotenv = require('dotenv');
+// const authRoutes = require('./routes/auth');
+// const taskRoutes = require('./routes/tasks');
 
-// Load environment variables
-dotenv.config();
+// // Load environment variables
+// dotenv.config();
 
-// Initialize express app
-const app = express();
+// // Initialize express app
+// const app = express();
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+// // Middleware
+// app.use(express.json());
 
-// Use routes
-app.use('/api/tasks', taskRoutes); // Protected
-app.use('/api/auth', authRoutes); // Public
+// // Routes
+// app.use('/api/tasks', taskRoutes); 
+// app.use('/api/auth', authRoutes); 
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+// // MongoDB connection
+// mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => console.log("MongoDB connected"))
+//   .catch(err => console.log(err));
 
-// Basic route to check if the server is working
-app.get('/', (req, res) => {
-  res.send("Task Tracker API is working!");
-});
+// // Basic route
+// app.get('/', (req, res) => {
+//   res.send("Task Tracker API is working!");
+// });
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// // ❌ No app.listen()
+// // ✅ Correct export
+// module.exports = app;
